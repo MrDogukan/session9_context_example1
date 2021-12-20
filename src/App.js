@@ -1,10 +1,11 @@
 import { useState } from "react";
-import StudentLists from "./components/StudentLists";
+import StudentList from "./components/StudentList";
 import { StudentContext } from "./context/StudentContext";
 import data from "./data";
 
 function App() {
   const [students, setStudents] = useState(data);
+
   const changeColor = (color, id) => {
     setStudents(
       students.map((student) =>
@@ -12,10 +13,11 @@ function App() {
       )
     );
   };
+
   return (
     <div>
-      <StudentContext.Provider value={{ students }}>
-        <StudentLists />
+      <StudentContext.Provider value={{ students, changeColor }}>
+        <StudentList />
       </StudentContext.Provider>
     </div>
   );
